@@ -6,7 +6,13 @@ function App() {
   const [todoList,setTodoList]=useState([]);
   const [newTask,setNewTask]=useState("");
 
+
   const handleChange=(event)=> setNewTask(event.target.value);
+
+  // useEffect (()=> {
+  //   alert ("i'm here");
+  //   return (alert('not anymore'));
+  // },[todoList])
 
   const addTask = ()=> {
     let task ={
@@ -15,6 +21,7 @@ function App() {
       completed : false
     }
     setTodoList([...todoList,task]);
+    setNewTask("");
   }; 
 
   const deleteTask = (id) =>{
@@ -35,7 +42,7 @@ function App() {
   return (
     <div className={styles.App}>
       <div className="addTask">
-        <input onChange={handleChange}/>
+        <input onChange={handleChange} value={newTask}/>
         <button onClick={addTask}>
             Add Task
             </button>
